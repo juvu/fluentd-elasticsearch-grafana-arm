@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+
+  apache:
+    image: 'httpd:2.4-alpine'
+    ports:
+    - '8800:80'
+    logging:
+      driver: 'fluentd'
+      options:
+        fluentd-address: 'localhost:24224'
+        tag: 'httpd.access'
+    depends_on:
+      - 'fluentd'
+
+  fluentd:
+    build:
+      context: ./fluentd
+    image: 'fluentd-test:dev'
+    ports:
+    - '24224:24224/tcp'
+    - '24224:24224/udp'
+    volumes:
+    - 'fluentd-log:/fluentd/log'
+    depends_on:
+      - 'elasticsearch'
+
+  elasticsearch:
+    build:
+      context: ./elasticsearch
+    image: 'elasticsearch-test:dev'
+    ports:
+      - '9200:9200'
+
+  grafana:
+    image: 'grafana/grafana'
+    ports:
+    - '9300:3000'
+
+volumes:
+  fluentd-log:
+    external: true
