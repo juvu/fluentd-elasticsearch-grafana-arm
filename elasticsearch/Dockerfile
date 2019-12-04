@@ -11,5 +11,7 @@ RUN apt-get update && \
 
 COPY elasticsearch.yml /elasticsearch-7.4.2/config/elasticsearch.yml
 COPY jvm.options /elasticsearch-7.4.2/config/jvm.options
+RUN elasticsearch-plugin install -b https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.4.2/elasticsearch-analysis-ik-7.4.2.zip
+RUN elasticsearch-plugin install -b https://github.com/medcl/elasticsearch-analysis-pinyin/releases/download/v7.4.2/elasticsearch-analysis-pinyin-7.4.2.zip
 
 ENTRYPOINT ["./elasticsearch-7.4.2/bin/elasticsearch"]
