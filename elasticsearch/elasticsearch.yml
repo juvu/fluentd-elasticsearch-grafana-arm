@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-#cluster.name: my-application
+cluster.name: es_218
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-#node.name: node-1
+node.name: zhujiedian_01
 #
 # Add custom attributes to the node:
 #
@@ -40,7 +40,11 @@
 #
 # Lock the memory on startup:
 #
-#bootstrap.memory_lock: true
+bootstrap.memory_lock: true
+node.master:true
+node.data:true
+
+
 #
 # Make sure that the heap size is set to about half the memory available
 # on the system and that the owner of the process is allowed to use this
@@ -54,8 +58,6 @@
 #
 #network.host: 192.168.0.1
 network.host: 0.0.0.0
-
-
 
 
 path.data: /usr/share/elasticsearch/data
@@ -96,10 +98,12 @@ http.cors.allow-origin: "*"
 #
 # discovery.type: single-node
 #discovery.seed_hosts: ["host1", "host2"]
+network.publish_host:["192.168.13.214"]
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
 #cluster.initial_master_nodes: ["node-1", "node-2"]
+cluster.initial_master_nodes: ["192.168.13.218"]
 #
 # For more information, consult the discovery and cluster formation module documentation.
 #
