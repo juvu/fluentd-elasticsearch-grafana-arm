@@ -9,7 +9,7 @@ RUN apt-get update && \
     rm -rf elasticsearch-*.tar.gz && \
     rm -rf /var/lib/apt/lists/*
 
-#COPY elasticsearch.yml /elasticsearch-7.4.2/config/elasticsearch.yml
+COPY elasticsearch.yml /elasticsearch-7.4.2/config/elasticsearch.yml
 #COPY jvm.options /elasticsearch-7.4.2/config/jvm.options
 
 ENTRYPOINT ["./elasticsearch-7.4.2/bin/elasticsearch"]
