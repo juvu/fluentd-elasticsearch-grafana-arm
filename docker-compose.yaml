@@ -6,14 +6,14 @@ services:
       context: ./elasticsearch
     image: 'elasticsearch-test:dev'
     volumes:    
-      - /data/sda1/esdata_0:/usr/share/elasticsearch/data   
+      - /data/sda1/esdata_1:/usr/share/elasticsearch/data   
     ports:
-      - '9201:9200'
+      - '9202:9200'
       - '9300:9300'
     environment:      
-      - node.name=master
+      - node.name=slave1
       # 是否可以成为master节点
-      - node.master=true
+      - node.master=false
       - network.publish_host=192.168.13.214
       - bootstrap.memory_lock=true 
       - memory-swap=-1 
