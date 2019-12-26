@@ -6,7 +6,7 @@ services:
       context: ./elasticsearch
     image: 'elasticsearch-test:dev'
     ports:
-      - '9200:9200'
+      - '9201:9200'
       - '9300:9300'
 
  
