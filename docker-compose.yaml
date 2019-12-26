@@ -8,19 +8,6 @@ services:
     volumes:    
       - /data/sda1/esdata_0:/usr/share/elasticsearch/data   
     ports:
-      - '9201:9200'
+      - '9200:9200'
       - '9300:9300'
-    environment:      
-      - node.name=master
-      # 是否可以成为master节点
-      - node.master=true
-      - network.publish_host=192.168.13.214
-      - bootstrap.memory_lock=true 
-      - memory-swap=-1 
-      - xpack.ml.enabled=false
-      # 是否允许该节点存储数据,默认开启
-      - node.data=true
-      - cluster.initial_master_nodes=192.168.13.214
-      - "ES_JAVA_OPTS=-Xms1056m -Xmx1056m"
-
- 
+   
