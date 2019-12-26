@@ -5,6 +5,8 @@ services:
     build:
       context: ./elasticsearch
     image: 'elasticsearch-test:dev'
+    volumes:    
+      - /data/sda1/esdata_0:/usr/share/elasticsearch/data   
     ports:
       - '9201:9200'
       - '9300:9300'
