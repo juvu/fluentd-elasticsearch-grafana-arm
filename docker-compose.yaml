@@ -10,5 +10,14 @@ services:
     ports:
       - '9201:9200'
       - '9300:9300'
+    environment:      
+      - node.name=master
+      # 是否可以成为master节点
+      - node.master=true
+      - network.publish_host=192.168.13.214
+      # 是否允许该节点存储数据,默认开启
+      - node.data=true
+      - cluster.initial_master_nodes=192.168.13.214
+      - "ES_JAVA_OPTS=-Xms1956m -Xmx1956m"
 
  
